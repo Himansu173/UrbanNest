@@ -22,7 +22,8 @@
             contact VARCHAR(20),
             address TEXT,
             password VARCHAR(255) NOT NULL,
-            profile_pic VARCHAR(255) DEFAULT "./users_profile_images/default_profile_image.jpeg"
+            profile_pic VARCHAR(255) DEFAULT "./users_profile_images/default_profile_image.jpeg",
+            bg_pic VARCHAR(255) DEFAULT "./users_bg_images/default_bg_image.png"
         )';
         $stm=$conn->prepare($user);
         $response=$stm->execute();

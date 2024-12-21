@@ -47,9 +47,9 @@ INSERT INTO property_photo (pid, imgpath) VALUES
 (1015, 'property_images/img7.jpg'),
 (1015, 'property_images/img8.jpg'),
 (1015, 'property_images/img9.jpg'),
-(1016, 'property_images/img10.jpeg'),
-(1016, 'property_images/img11.jpeg'),
-(1016, 'property_images/img12.jpeg'),
+(1016, 'property_images/img10.jpg'),
+(1016, 'property_images/img11.jpg'),
+(1016, 'property_images/img12.jpg'),
 (1017, 'property_images/img13.jpg'),
 (1017, 'property_images/img14.jpg'),
 (1017, 'property_images/img15.jpg'),
@@ -86,6 +86,6 @@ INSERT INTO property_photo (pid, imgpath) VALUES
 (1028, 'property_images/img7.jpg'),
 (1028, 'property_images/img8.jpg'),
 (1028, 'property_images/img9.jpg'),
-(1029, 'property_images/img10.jpeg'),
-(1029, 'property_images/img11.jpeg'),
-(1029, 'property_images/img12.jpeg');
+(1029, 'property_images/img10.jpg'),
+(1029, 'property_images/img11.jpg'),
+(1029, 'property_images/img12.jpg');
