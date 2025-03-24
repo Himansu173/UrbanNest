@@ -56,4 +56,3 @@ This project is open-source and available under the MIT License.
 For any queries or feedback, feel free to reach out.
 
 ---
-~
