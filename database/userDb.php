@@ -41,4 +41,33 @@
             return ["error","Wrong current password."];
         }
     }
+
+    function getTotalUser() {
+        global $conn;
+        $stmt = $conn->prepare("SELECT COUNT(*) AS total_user FROM user");
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                // echo "No of contacts ".$row['total_user'];
+                return $row['total_user']; 
+            } else {
+                return 0; 
+            }
+        }
+    }
+
+    function getUsers() {
+        global $conn;
+        $stmt = $conn->prepare("SELECT * FROM user");
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0) {
+                return $result;
+            } else {
+                return null;
+            }
+        }
+    }
+    
 ?>

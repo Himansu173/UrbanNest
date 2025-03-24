@@ -1,5 +1,32 @@
 <?php
     require_once "dbconnect.php";
+    function getAllProperties(){
+        global $conn;
+        $qry="SELECT * FROM property";
+        $stm=$conn->prepare($qry);
+        $res=$stm->execute();
+        if($res){
+            $res=$stm->get_result();
+            if($res->num_rows>0){
+                return $res;
+            }
+        }
+        return false;
+    }
+    function getTotalProperty() {
+        global $conn;
+        $stmt = $conn->prepare("SELECT COUNT(*) AS total_property FROM property");
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                // echo "No of contacts ".$row['total_user'];
+                return $row['total_property']; 
+            } else {
+                return 0; 
+            }
+        }
+    }
     function getPropertyLocation($pid){
         global $conn;
         $qry="SELECT * FROM address WHERE pid=?";
@@ -124,5 +151,40 @@
             }
         }
         return false;
+    }
+    function getPropertyData(){
+        try{
+            global $conn ;
+            $query = "SELECT p.pid, p.house_type, p.carpet_area, f.rent_amount, a.city, a.state 
+                FROM property p 
+                JOIN finance_details f ON p.pid = f.pid 
+                JOIN address a ON p.pid = a.pid ;";
+            $stmt = $conn->prepare($query);
+            if($stmt->execute()){
+                $result = $stmt->get_result();
+                if($result->num_rows > 0){
+                    return $result;
+                }
+            }
+        }catch(Exception $e){
+            echo $e->error();
+        }finally{
+            // $conn->close();
+        }
+    }
+    function tooglePropertyStatus($pid,$status){
+        global $conn;
+        $qry="UPDATE property SET status=? WHERE pid=?";
+        $stm=$conn->prepare($qry);
+        $stm->bind_param("i",$pid);
+        if($stm->execute()){
+            ?>
+            <script>window.reload()</script>
+            <?php
+        }else{
+            ?>
+            <script>alert("something went wrong.")</script>
+            <?php
+        }
     }
 ?>

@@ -40,7 +40,7 @@
 
 </footer>
 <div class="copyright text-center my-2">
-  <p><span>Copyright</span>© 2024 <strong class="sitename">UrbanNest</strong> <span>All Rights Reserved</span></p>
+  <p><span>Copyright</span> © 2025 <strong class="sitename">UrbanNest</strong> <span>All Rights Reserved</span></p>
 </div>
 <!-- Vendor JS Files -->
 <script src="../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>

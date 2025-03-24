@@ -406,14 +406,6 @@ section,
   overflow: clip;
 }
 
-@media (max-width: 1199px) {
-
-  section,
-  .section {
-    scroll-margin-top: 64px;
-  }
-}
-
 /*--------------------------------------------------------------
 # Global Section Titles
 --------------------------------------------------------------*/
@@ -562,35 +554,6 @@ section,
   overflow: hidden;
 }
 
-.recent-posts .post-category {
-  font-size: 16px;
-  color: var(--default-color);
-  margin-bottom: 10px;
-}
-
-.recent-posts .title {
-  display: flex;
-  justify-content: space-between;
-  font-weight: 700;
-  padding: 0;
-  margin: 0 0 20px 0;
-}
-.recent-posts .title {
-  font-size: 14px;
-}
-.recent-posts .title .price {
-  color: var(--default-color);
-  font-size: 8px;
-}
-
-.recent-posts .title a {
-  color: var(--heading-color);
-  transition: 0.3s;
-}
-.recent-posts .title a:hover {
-  color: var(--accent-color);
-}
-
 .custom-btn {
   background-color: #e84545;
   color: #ffffff;
@@ -671,6 +634,6 @@ section,
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
 
-.modal-backdrop {
+/* .modal-backdrop {
   z-index: 0 !important;
-}
+} */

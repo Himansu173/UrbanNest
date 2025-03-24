@@ -23,7 +23,7 @@ require_once "navbar.php"
       <div class="row">
         <div class="col-lg-10">
           <h2 data-aos="fade-up" data-aos-delay="100">Welcome to UrbanNest</h2>
-          <p data-aos="fade-up" data-aos-delay="200">Rent Easy, Live Happy.</p>
+          <p data-aos="fade-up" data-aos-delay="200">Your Home Away From Home.</p>
         </div>
         <div class="col-lg-5" data-aos="fade-up" data-aos-delay="300">
           <form action="forms/newsletter.php" method="post" class="php-email-form">
@@ -72,117 +72,37 @@ require_once "navbar.php"
 
     <div class="container">
       <div class="row mx-auto">
-          <!-- First Card -->
-          <div class="col-xl-4 col-md-6 p-3" data-aos="fade-up" data-aos-delay="100">
-            <article>
-              <div class="post-img">
-                <img src="../assets/img/blog/blog-1.jpeg" alt="" class="img-fluid w-100" style="height: 300px">
-              </div>
-              <h2 class="title">
-                <div class="name">
-                  <a>3BHK - Sunrise Apartment</a>
+        <?php
+          require_once "../../database/recentPost.php";
+          $property = getRecentPost();
+        ?>
+        <?php if ($property){ ?>
+          <?php while ($row = $property->fetch_assoc()){ $images=getPropertyImg($row['pid']); ?>
+            <div class="col-xl-3 col-md-6 p-3" data-aos="fade-up" data-aos-delay="100">
+              <article class="property-card">
+                <div class="post-img">
+                  <img src="../../database/<?php echo $images[0]['imgpath']?>" alt="<?php echo $row['house_type']; ?>" class="img-fluid">
                 </div>
-                <div class="price">
-                  <p class="post-category">&#x20B9;45.5L (2200 Sqft)</p>
+                <div class="card-body">
+                  <h2 class="title fs-5" style="margin-bottom: 5px;"><?php echo $row['house_type']; ?></h2>
+                  <p class="price" style="margin-bottom: 5px;">
+                    <span class="text-success fs-5">₹<?php echo number_format($row['rent_amount'], 0); ?></span>
+                    <span>Rent/month</span>
+                    <span class="text-muted"> (<?php echo $row['carpet_area']; ?>)</span>
+                  </p>
+                  <p class="location" style="margin-bottom: 5px;">
+                    <strong>City:</strong> <?php echo $row['city']; ?><br>
+                    <strong>State:</strong> <?php echo $row['state']; ?>
+                  </p>
+                  <a href="./propertyDetails.php?id=<?php echo $row['pid'] ?>" class="btn custom-btn mt-2">View Details</a>
                 </div>
-              </h2>
-              <p class="post-category"><i class="bi bi-geo-alt-fill"></i>Patia, Bhubaneswar</p>
-              <a class="btn custom-btn" href="./propertyDetails.php">View Details</a>
-            </article>
-          </div>
-          <!-- Second Card -->
-          <div class="col-xl-4 col-md-6 p-3" data-aos="fade-up" data-aos-delay="100">
-            <article>
-              <div class="post-img">
-                <img src="../assets/img/blog/blog-2.jpg" alt="" class="img-fluid w-100" style="height: 300px">
-              </div>
-              <h2 class="title">
-                <div class="name">
-                  <a>2BHK - Green Residency</a>
-                </div>
-                <div class="price">
-                  <p class="post-category">&#x20B9;30.5L (1600 Sqft)</p>
-                </div>
-              </h2>
-              <p class="post-category"><i class="bi bi-geo-alt-fill"></i>Khandagiri, Bhubaneswar</p>
-              <a class="btn custom-btn" href="./propertyDetails.php">View Details</a>
-            </article>
-          </div>
-          <!-- Third Card -->
-          <div class="col-xl-4 col-md-6 p-3" data-aos="fade-up" data-aos-delay="100">
-            <article>
-              <div class="post-img">
-                <img src="../assets/img/blog/blog-3.jpeg" alt="" class="img-fluid w-100" style="height: 300px">
-              </div>
-              <h2 class="title">
-                <div class="name">
-                  <a>Cozy Villa</a>
-                </div>
-                <div class="price">
-                  <p class="post-category">&#x20B9;18.2L (900 Sqft)</p>
-                </div>
-              </h2>
-              <p class="post-category"><i class="bi bi-geo-alt-fill"></i>Sailashree Vihar, Bhubaneswar</p>
-              <a class="btn custom-btn" href="./propertyDetails.php">View Details</a>
-            </article>
-          </div>
+              </article>
+            </div>
+          <?php } ?>
+        <?php }else{ ?>
+          <p>No recent posts found.</p>
+        <?php } ?>
       </div>
-      <div class="row mx-auto my-3">
-          <!-- First Card -->
-          <div class="col-xl-4 col-md-6 p-3" data-aos="fade-up" data-aos-delay="100">
-            <article>
-              <div class="post-img">
-                <img src="../assets/img/blog/blog-1.jpeg" alt="" class="img-fluid w-100" style="height: 300px">
-              </div>
-              <h2 class="title">
-                <div class="name">
-                  <a>3BHK - Sunrise Apartment</a>
-                </div>
-                <div class="price">
-                  <p class="post-category">&#x20B9;45.5L (2200 Sqft)</p>
-                </div>
-              </h2>
-              <p class="post-category"><i class="bi bi-geo-alt-fill"></i>Patia, Bhubaneswar</p>
-              <a class="btn custom-btn" href="./propertyDetails.php">View Details</a>
-            </article>
-          </div>
-          <!-- Second Card -->
-          <div class="col-xl-4 col-md-6 p-3" data-aos="fade-up" data-aos-delay="100">
-            <article>
-              <div class="post-img">
-                <img src="../assets/img/blog/blog-2.jpg" alt="" class="img-fluid w-100" style="height: 300px">
-              </div>
-              <h2 class="title">
-                <div class="name">
-                  <a>2BHK - Green Residency</a>
-                </div>
-                <div class="price">
-                  <p class="post-category">&#x20B9;30.5L (1600 Sqft)</p>
-                </div>
-              </h2>
-              <p class="post-category"><i class="bi bi-geo-alt-fill"></i>Khandagiri, Bhubaneswar</p>
-              <a class="btn custom-btn" href="./propertyDetails.php">View Details</a>
-            </article>
-          </div>
-          <!-- Third Card -->
-          <div class="col-xl-4 col-md-6 p-3" data-aos="fade-up" data-aos-delay="100">
-            <article>
-              <div class="post-img">
-                <img src="../assets/img/blog/blog-3.jpeg" alt="" class="img-fluid w-100" style="height: 300px">
-              </div>
-              <h2 class="title">
-                <div class="name">
-                  <a>Cozy Villa</a>
-                </div>
-                <div class="price">
-                  <p class="post-category">&#x20B9;18.2L (900 Sqft)</p>
-                </div>
-              </h2>
-              <p class="post-category"><i class="bi bi-geo-alt-fill"></i>Sailashree Vihar, Bhubaneswar</p>
-              <a class="btn custom-btn" href="./propertyDetails.php">View Details</a>
-            </article>
-          </div>
-      </div><!-- End recent posts list -->
     </div>
 
   </section><!-- /Recent Posts Section -->
@@ -213,7 +133,7 @@ require_once "navbar.php"
             </div><!-- End Info Item -->
 
             <div class="col-md-6">
-              <div class="info-item" data-aos="fade-up" data-aos-delay="200">
+              <div class="info-item" data-aos="fade-up" data-aos-delay="300">
                 <i class="bi bi-telephone"></i>
                 <h3>Call Us</h3>
                 <p>+91 12345 06789</p>
@@ -222,7 +142,7 @@ require_once "navbar.php"
             </div><!-- End Info Item -->
 
             <div class="col-md-6">
-              <div class="info-item" data-aos="fade-up" data-aos-delay="300">
+              <div class="info-item" data-aos="fade-up" data-aos-delay="400">
                 <i class="bi bi-envelope"></i>
                 <h3>Email Us</h3>
                 <p>info@urbannest.com</p>
@@ -231,7 +151,7 @@ require_once "navbar.php"
             </div><!-- End Info Item -->
 
             <div class="col-md-6">
-              <div class="info-item" data-aos="fade-up" data-aos-delay="300">
+              <div class="info-item" data-aos="fade-up" data-aos-delay="500">
                 <i class="bi bi-clock"></i>
                 <h3>Open Hours</h3>
                 <p>Monday - Friday</p>

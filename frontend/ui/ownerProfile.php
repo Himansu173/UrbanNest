@@ -110,7 +110,6 @@
     </div>
     <div class="d-flex flex-wrap justify-content-evenly" id="yourProperties"></div>
 </div>
-<script src="../js/ownersProfile.js"></script>
 <?php 
     require_once "footer.php";
     while($property=$userProperty->fetch_assoc()){
@@ -142,7 +141,7 @@
                     <div class="card-body p-2 property-body bg-white">
                         <div class="d-flex align-items-center">
                             <h5 class="card-title"><?php echo $loc['locality'] ?></h5>
-                            <span class="badge ms-2 text-bg-success propertyStatus" style="cursor:pointer;">Available</span>
+                            <span class="badge ms-2 text-bg-<?php $property['status']=="Available"?print('success'):print('danger'); ?>" onclick="toogleStatus(<?php echo $property['pid'].",".$property['status'] ?>)" style="cursor:pointer;"><?php echo $property['status'] ?></span>
                         </div>
                         <p class="card-text mb-1 fs-6">
                             <img src="../assets/img/bed.png" alt="img" width="20rem">
@@ -165,3 +164,24 @@
 <?php
     }
 ?>
+<script>
+    $("#edit").click(() => {
+        console.log("called");
+        
+    $(".update-btn").removeClass("hide");
+    $("#edit").addClass("hide");
+    $(".inp-details").removeClass("read-only");
+})
+$(".update-btn").click(() => {
+    $(".update-btn").addClass("hide");
+    $("#edit").removeClass("hide");
+    $(".inp-details").addClass("read-only");
+})
+$("#addNew").click(()=>{window.location="propertyRegister.php"})
+function toogleStatus(pid,status) {
+    <?php tooglePropertyStatus($pid,$status)?>    
+}
+function closePasswordUpdateModal(){
+    
+}
+</script>

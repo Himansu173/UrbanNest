@@ -3,6 +3,9 @@
   session_start();
   if(isset($_SESSION['userId'])){
     $isLogged = true;
+    require_once "../../database/userDb.php";
+    $user = getUserById($_SESSION['userId']);
+    // print_r($user);
   }
 ?>
 <!DOCTYPE html>
@@ -10,7 +13,7 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>UrbanNest</title>
+    <title>UrbanNest - Your Home Away From Home</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
 
@@ -85,7 +88,7 @@
               aria-expanded="false"
             >
               <img
-                src="../assets/img/profile.png"
+                src="../../database/' .($user['profile_pic']) . '"
                 class="rounded-circle"
                 height="40"
                 alt="Black and White Portrait of a Man"
@@ -97,10 +100,7 @@
               aria-labelledby="navbarDropdownMenuAvatar"
             >
               <li>
-                <a class="dropdown-item" href="#">My profile</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">Settings</a>
+                <a class="dropdown-item" href="./ownerProfile.php">My profile</a>
               </li>
               <li>
                 <a class="dropdown-item" href="./logout.php">Logout</a>
