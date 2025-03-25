@@ -112,7 +112,7 @@ require_once "navbar.php"
 
     <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
-      <h2>Contact</h2>
+      <h2>Support</h2>
       <p>Contact Us for Queries, Property Details, or Assistance with Your Ideal House Rental</p>
     </div><!-- End Section Title -->
 

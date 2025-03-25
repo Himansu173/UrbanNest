@@ -1,8 +1,13 @@
 <?php  
-  $isLogged = false;
   session_start();
+  $isLogged = false;
+  $isAdmin = false;
   if(isset($_SESSION['userId'])){
-    $isLogged = true;
+    if($_SESSION['userId']=='1000'){
+      $isAdmin=true;
+    }else{
+      $isLogged = true;
+    }
     require_once "../../database/userDb.php";
     $user = getUserById($_SESSION['userId']);
     // print_r($user);
@@ -59,7 +64,7 @@
     <div
       class="container-fluid py-xl-0 py-3 position-relative d-flex align-items-center position-sticky sticky-top justify-content-between bg-white shadow-sm"
     >
-      <a href="index.php" class="logo d-flex align-items-center me-xl-0">
+      <a href="home.php" class="logo d-flex align-items-center me-xl-0">
         <!-- <img src="../assets/img/logo.png" alt="LOGO" class="rounded" height="35px"> -->
         <div class="p-1 bg-black text-white rounded fw-bold">UN</div>
         <h4 class="fw-semibold text-black mb-0 ms-1">UrbanNest</h4>
@@ -69,15 +74,19 @@
         <ul>
           <li><a href="./home.php#hero" class="active">Home</a></li>
           <li>
-            <a href="./home.php#recent-posts" class="active">Recent Post</a>
+            <a href="./home.php#recent-posts" class="active">Recent Posts</a>
           </li>
-          <li><a href="./home.php#contact" class="active">Contact</a></li>
+          <li>
+            <a href="./allProperties.php?page=1 " class="active">All Properties</a>
+          </li>
+          <li><a href="./home.php#contact" class="active">Support</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <?= $isLogged 
-        ? '<div class="dropdown">
+      <?php
+       if($isLogged){ 
+        echo '<div class="dropdown">
             <a
               data-mdb-dropdown-init
               class="dropdown-toggle-d-none d-flex align-items-center hidden-arrow"
@@ -106,18 +115,56 @@
                 <a class="dropdown-item" href="./logout.php">Logout</a>
               </li>
             </ul>
-          </div>'
-        : '<a
+          </div>';
+       }elseif($isAdmin){
+        echo '<div class="dropdown">
+            <a
+              data-mdb-dropdown-init
+              class="dropdown-toggle-d-none d-flex align-items-center hidden-arrow"
+              href="#"
+              id="navbarDropdownMenuAvatar"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img
+                src="../../database/' .($user['profile_pic']) . '"
+                class="rounded-circle"
+                height="40"
+                alt="Black and White Portrait of a Man"
+                loading="lazy"
+              />
+            </a>
+            <ul
+              class="dropdown-menu "
+              aria-labelledby="navbarDropdownMenuAvatar"
+            >
+              <li>
+                <a class="dropdown-item" href="./adminDashboard.php">Admin Dashborad</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="./ownerProfile.php">My profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="./logout.php">Logout</a>
+              </li>
+            </ul>
+          </div>';
+       }
+        else{ 
+        echo '<a
             class="btn btn-dark btn-sm"
             data-bs-toggle="modal"
             data-bs-target="#loginModal"
           >
             Log In
-          </a>'
-      ?>
+          </a>';
+        }
+        
 
-      <?php require_once "login.php"; ?>
-      <?php require_once "signup.php"?>
+       require_once "login.php"; 
+       require_once "signup.php"
+      ?>
     </div>
   </body>
 </html>

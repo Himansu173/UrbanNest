@@ -1,9 +1,16 @@
 <?php
+// session_start();
 require_once "navbar.php";
 require_once "../../database/dbConnect.php";
 require_once "../../database/userDb.php";
 require_once "../../database/propertiesDetailsDb.php";
 require_once "../../database/contactDb.php";
+
+if(!isset($_SESSION['userId']) or $_SESSION['userId']!='1000'){
+    ?>
+        <script>window.location.href="./home.php"</script>
+    <?php
+}
 
 $userData = getUsers();
 $propertyData = getPropertyData();

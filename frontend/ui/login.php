@@ -68,7 +68,8 @@
                 success: function (response){
                   //console.log(response);
                   if(response.trim() === "success"){
-                    window.location.href = "home.php";
+                    // window.location.href = "home.php";
+                    location.reload();
                   }else if(response.trim() === "error1"){
                     console.log("error1");
                     document.getElementById("errorLoginEmail").innerText = "The email is not registered. Please check for typos or sign up for a new account.";
