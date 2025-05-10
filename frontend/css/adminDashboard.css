@@ -1,0 +1,79 @@
+.order-card {
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+    border: none;
+    margin-bottom: 30px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    }
+    
+    .order-card:hover {
+    box-shadow: 0 8px 15px 0 rgba(4, 26, 55, 0.3);
+    transform: scale(1.02);
+    }
+    
+    .bg-c-blue {
+    background: linear-gradient(45deg, #4099ff, #73b4ff);
+    }
+    
+    .bg-c-green {
+    background: linear-gradient(45deg, #2ed8b6, #59e0c5);
+    }
+    
+    .bg-c-yellow {
+    background: linear-gradient(45deg, #ffb64d, #ffcb80);
+    }
+    
+    .bg-c-pink {
+    background: linear-gradient(45deg, #ff5370, #ff869a);
+    }
+    
+    .card .card-block {
+    padding: 25px;
+    }
+    
+    .order-card i {
+    font-size: 26px;
+    }
+    
+    .f-left {
+    float: left;
+    }
+    
+    .f-right {
+    float: right;
+    }
+    
+    h2 {
+    font-size: 24px;
+    }
+    
+    @media (max-width: 768px) {
+        .card .card-block {
+            padding: 15px;
+        }
+    
+        h2 {
+            font-size: 20px;
+        }
+    
+        .order-card i {
+            font-size: 20px;
+        }
+    }
+    .responsive-fieldset {
+        width: 100%; 
+        padding: 10px 0; 
+        box-sizing: border-box; 
+        font-size: 30px; 
+    }
+    
+    @media (max-width: 768px) {
+        .responsive-fieldset {
+            font-size: 22px; 
+            padding: 8px; 
+        }
+    }
+    
+    

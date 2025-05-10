@@ -1,0 +1,33 @@
+.highlightEle {
+    color: #e84545;
+    border-bottom: 3px solid #e84545;
+}
+
+.hidden {
+    width: 100%;
+    z-index: 2;
+    position: absolute;
+    left: -100%;
+}
+.property-body{
+    margin-bottom:-54px;
+    z-index:1;
+    transition:0.3s ease-in-out;
+}
+.property-card:hover .property-body{
+    margin-bottom:0px;
+    margin-top:-54px;
+}
+.property-card{
+    transition:0.3s ease-in-out;
+    width:16rem;
+}
+.property-card:hover{
+    box-shadow: 0px 4px 10px lightgray;
+}
+@media only screen and (max-width: 768px) {
+    .property-card {
+        width:100%;
+        box-shadow: 0px 4px 10px lightgray;
+    }
+}
